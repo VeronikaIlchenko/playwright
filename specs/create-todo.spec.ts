@@ -1,16 +1,15 @@
 import { test, expect } from '@playwright/test';
 import { TodoPage } from '../pages/TodoPage';
+import { todoTestData }  from '../pages/testData'
 
-test('Add To Do', async({page})=>{
+test('@positive Add To Do', async({page})=>{
     const todoPage = new TodoPage(page);
 
     await todoPage.goto();
 
-    await todoPage.addToDoItem('title 1', 'description 1');
+    await todoPage.addToDoItem(todoTestData.title, todoTestData.description);
 
-    const ToDoItemList = await page.evaluate(()=> {
-        return JSON.parse(localStorage.getItem('todolist') || '[]')
-    }) 
+    const toDoItemList = await todoPage.takeToDoListFromLocalStore(page);
 
-    expect(ToDoItemList[0].title).toBe('title 1')
+    expect(toDoItemList[0].title).toBe(todoTestData.title);
 }) 
