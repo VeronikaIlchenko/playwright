@@ -26,9 +26,9 @@ async goto() {
     await this.page.goto('http://localhost:3000/');
   }
 
-async completeTodo () {
+async completeTodo (index: number) {
     await this.toDoTab.click();
-    await this.completeTaskFromToDo(0).click();
+    await this.completeTaskFromToDo(index).click();
 }  
 
 async goToCompleteTodo () {

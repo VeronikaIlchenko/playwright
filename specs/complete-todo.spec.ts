@@ -10,7 +10,7 @@ test('@positive Complete To Do', async({page})=>{
     const todoPage = new TodoPage(page);
     await completedTodo.goto();
     await todoPage.addToDoItem(todoTestData.title, todoTestData.description);
-    await completedTodo.completeTodo();
+    await completedTodo.completeTodo(0);
     await completedTodo.goToCompleteTodo();
     const completedItem = await completedTodo.getCompletedItem(0);
     await expect(completedItem).toContainText(todoTestData.title);
