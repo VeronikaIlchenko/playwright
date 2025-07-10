@@ -4,3 +4,8 @@ export const todoTestData = {
   editTitle: 'title 2',
   editDescription: 'description 2'
 };
+
+export const editTestData = {
+  editTitle: 'title 2',
+  editDescription: 'description 2'
+};
