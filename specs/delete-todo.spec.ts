@@ -12,7 +12,7 @@ test('delete Todo', async({page})=>{
     await todoPage.addToDoItem(todoTestData.title, todoTestData.description);
     const toDoItemList = await todoPage.takeToDoListFromLocalStore(page);
     expect(toDoItemList[0].title).toBe(todoTestData.title);
-    await deleteTodo.deleteTodo(0);
+    await deleteTodo.deleteTodoByIndex(0);
     const updatedList = await todoPage.takeToDoListFromLocalStore(page);
     expect(updatedList.length).toBe(0);
 
